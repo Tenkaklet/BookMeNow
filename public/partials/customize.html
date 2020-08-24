@@ -1,0 +1,29 @@
+<main class="container">
+    <div class="text-center">
+        <h1 ng-style="{'color': textColor}">Customize App</h1>
+        <p>Customize the look and feel of your application here</p>
+    </div>
+    <form ng-submit="changeBackground()">
+        <div class="row">
+            <article class="col-md-6">
+                <div class="form-group">
+                    <p class="lead">How do you want the background of the application to look like?</p>
+                    <div kendo-flat-color-picker ng-model="backgroundColor" k-on-change="changeBG()" k-opacity="true">
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-6">
+                <p class="lead">What color do you want the text of the application to be?</p>
+                <input kendo-color-picker k-palette="'websafe'" ng-model="textColor" k-on-change="changeTextColor()">
+            </article>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Save colors</button>
+    </form>
+    <section class="col-md-12">
+        <form ng-submit="changeMessage()">
+            <p class="lead">What would you like the welcome message to say?</p>
+            <textarea kendo-editor k-ng-model="welcomeMessage"></textarea>
+            <button type="submit" class="btn btn-primary btn-sm">Save message</button>
+        </form>
+    </section>
+</main>

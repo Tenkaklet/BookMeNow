@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ appName }}</h1>
+            <div ng-bind-html="welcomeMessage"></div>
+        </div>
+        <div class="col-md-4">
+            <kendo-date-picker k-scope-field="datePicker" k-on-change="onChange()"></kendo-date-picker>
+            <p><small>{{ pickedDate }}</small></p>
+        </div>
+    </div>
+</div>

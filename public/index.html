@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="boiler">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kendo Example</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+
+<body ng-style="{'background-color': bgColor, 'color': textColor}">
+    <div ng-include="'partials/navigation.html'"></div>
+    <div ng-view></div>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.0/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.0/angular-sanitize.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/lib/ui-bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/homeController.js"></script>
+    <script src="js/controllers/registrationController.js"></script>
+    <script src="js/controllers/dashboardController.js"></script>
+    <script src="js/controllers/navigationController.js"></script>
+    <script src="js/controllers/customizeController.js"></script>
+    <script src="js/services/account.js"></script>
+    <script src="js/services/firebase.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyARI0ieY7RrF63VmnqawtmTFlx6euCI-RQ",
+            authDomain: "kendo-nilex.firebaseapp.com",
+            databaseURL: "https://kendo-nilex.firebaseio.com",
+            projectId: "kendo-nilex",
+            storageBucket: "kendo-nilex.appspot.com",
+            messagingSenderId: "243741700870",
+            appId: "1:243741700870:web:f1ace530b4643f7dcaa487",
+            measurementId: "G-RPBKFJWXYS"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</body>
+
+</html>

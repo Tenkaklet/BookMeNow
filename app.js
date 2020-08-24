@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-const authRoute = require('./routes/auth');
+const firebaseRoute = require('./routes/firebase');
 var data = require('./routes/data');
 var PORT = process.env.PORT || 3000;
 var app = express();
@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/data', data);
-app.use('/auth', authRoute);
+app.use('/firebase', firebaseRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

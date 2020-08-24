@@ -2,18 +2,26 @@
     <h1>DASHBOARD</h1>
     <div class="row">
         <div class="col-md-8">
-            <kendo-grid k-options="gridOptions" k-on-change="handleChange(data, dataItem, columns)"></kendo-grid>
+            <kendo-grid k-options="gridOptions" k-data-source="data" k-on-change="handleChange(data, dataItem, columns)"></kendo-grid>
+            <div class="mt-5" ng-if="selected">
+                <h3>Selected book</h3>
+                <strong>Title</strong>
+                <p class="lead">{{selected.title}}</p>
+                <strong>Author</strong>
+                <p class="lead">{{selected.author}}</p>
+            </div>
         </div>
         <div class="col-md-4">
             <form ng-submit="sendBook(book)">
                 <h3>Add your new book...</h3>
+                <p class="text-danger">{{error}}</p>
                 <div class="form-group">
                     <label for="title">Book title</label>
-                    <input type="text" class="form-control" id="title" ng-model="book.title">
+                    <input type="text" class="form-control" id="title" ng-model="book.title" required>
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" ng-model="book.author">
+                    <input type="text" class="form-control" id="author" ng-model="book.author" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-info">Save</button>

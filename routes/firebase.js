@@ -12,8 +12,15 @@ admin.initializeApp({
 });
 
 router.get('/:user', (req, res) => {
-    console.log(req.params.user);
-    res.send('req.params.user');
+    let dataToSend = [];
+    const db = admin.database();
+    const bookDB = db.ref(`${req.params.user}/books`);
+    bookDB.once('value', snapshot => {
+        dataToSend.push(snapshot.val());
+        res.json(dataToSend);
+    }, error => {
+        console.log(error.code);
+    });
 })
 
 module.exports = router;

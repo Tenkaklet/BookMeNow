@@ -1,26 +1,22 @@
-angular.module('boiler').controller('DashboardCtrl', ['$scope', '$firebaseArray', '$rootScope', 'Account', 'Auth', function ($scope, $firebaseArray, $rootScope, Account, Auth) {
+angular.module('boiler').controller('DashboardCtrl', ['$scope', '$firebaseArray', '$timeout', 'Account', 'Auth', function ($scope, $firebaseArray, $timeout, Account, Auth) {
     // Fetch external data from Same site server
     Auth.$onAuthStateChanged((user) => {
         $scope.user = user;
         Account.retrieve($scope.user.uid)
-        .then(() => {
-            console.log(user);
+        .then((data) => {
+            $scope.data = data.data[0];
+            let arr = Object.keys($scope.data).map((k) => $scope.data[k]);
+            $scope.data = arr;
         });
     });
-    const data = new kendo.data.DataSource({
-        transport: {
-            read: {
-                url: '/data',
-                dataType: 'json'
-            }
-        }
-    });
+
+
     $scope.gridOptions = {
-        dataSource: data,
         sortable: true,
         selectable: true,
         columns: [
-            { field: 'Name'}
+            { field: 'author'},
+            { field: 'title'}
         ]
     };
 
@@ -29,11 +25,19 @@ angular.module('boiler').controller('DashboardCtrl', ['$scope', '$firebaseArray'
     };
 
     $scope.handleChange = function (item) {
-        $scope.data = item;
+        $scope.selected = item;
+        
     };
 
     $scope.sendBook = function (book) {
-        const bookDB = firebase.database().ref($rootScope.currentUser.uid).child('books');
+        if(!book) {
+            $scope.error = 'Please fill in the form';
+            return;
+        }
+        const bookDB = firebase.database().ref($scope.user.uid).child('books');
         $firebaseArray(bookDB).$add(book);
+        $timeout(() => {
+            window.location.reload();
+        }, 1500);
     };
 }]);

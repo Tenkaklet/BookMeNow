@@ -20,10 +20,6 @@ angular.module('boiler').controller('DashboardCtrl', ['$scope', '$firebaseArray'
         ]
     };
 
-    $scope.onChange = function () {
-        $scope.pickedDate = $scope.datePicker.value();
-    };
-
     $scope.handleChange = function (item) {
         $scope.selected = item;
         

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Max Carlquist",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "watch": "node-sass --watch public/styles/main.scss public/css/style.css"
   },
   "dependencies": {
